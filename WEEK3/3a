@@ -28,5 +28,4 @@ int main() {
     printf("Float value: %f\n", data.floating);
     printf("Character value: %c\n", data.character);
 
-    return 0;
-}
+    return 0;}
