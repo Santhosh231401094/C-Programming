@@ -74,8 +74,7 @@ int evaluateInfix(char* expression) {
                 i++;
             }
             i--;
-            push(&operands, value);
-        } else if (expression[i] == '(') {
+            push(&operands, value);} else if (expression[i] == '(') {
             push(&operators, expression[i]);
         } else if (expression[i] == ')') {
             while(!isEmpty(&operators) && operators.items[operators.top] != '(') {
@@ -83,8 +82,7 @@ int evaluateInfix(char* expression) {
                 int operand1 = pop(&operands);
                 char operator = pop(&operators);
                 push(&operands, applyOperator(operand1, operator, operand2));
-            }
-            pop(&operators);
+            }pop(&operators);
         } else {
             while (!isEmpty(&operators) && precedence(operators.items[operators.top]) >= precedence(expression[i])) {
                 int operand2 = pop(&operands);
@@ -98,9 +96,7 @@ int evaluateInfix(char* expression) {
         int operand1 = pop(&operands);
         char operator = pop(&operators);
         push(&operands, applyOperator(operand1, operator, operand2));
-    }
-    return pop(&operands);
-}
+    } return pop(&operands);}
 int main() {
     char expression[MAX];
     printf("Enter the infix expression: ");
@@ -108,5 +104,4 @@ int main() {
     expression[strcspn(expression, "\n")] = '\0';
     int result = evaluateInfix(expression);
     printf("Result of infix expression evaluation: %d\n", result);
-    return 0;
-}
+    return 0;}
